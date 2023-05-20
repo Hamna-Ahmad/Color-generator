@@ -14,7 +14,7 @@ fetch(`https://www.thecolorapi.com/scheme?hex=${color}&mode=${mode}&count=5`)
         for(let i = 0; i < colorArray.length; i++){
             colorHtml += 
             `
-            <div class="color${i + 1}" style="background-color:${colorArray[i].hex.value};"></div>
+            <div id=${colorArray[i].hex.value} class="color color${i + 1}" style="background-color:${colorArray[i].hex.value};"></div>
             `
             hexHtml +=
             `
@@ -26,10 +26,16 @@ fetch(`https://www.thecolorapi.com/scheme?hex=${color}&mode=${mode}&count=5`)
     })
 })
 
-
+// Copy hex-color label to clipboard
 document.getElementById('hex-label-container').addEventListener('click', function(e){
 const color = document.getElementById(e.target.id).textContent
-console.log(color)
 navigator.clipboard.writeText(color)
 alert(`Copied the color: ${color}`)
 })
+
+// Copy box hex-color to clipboard
+document.getElementById('color-container').addEventListener('click', function(e){
+    const color = e.target.id
+    navigator.clipboard.writeText(color)
+    alert(`Copied the color: ${color}`)
+    })
