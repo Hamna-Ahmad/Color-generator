@@ -28,14 +28,27 @@ fetch(`https://www.thecolorapi.com/scheme?hex=${color}&mode=${mode}&count=5`)
 
 // Copy hex-color label to clipboard
 document.getElementById('hex-label-container').addEventListener('click', function(e){
-const color = document.getElementById(e.target.id).textContent
-navigator.clipboard.writeText(color)
-alert(`Copied the color: ${color}`)
-})
+    const color = document.getElementById(e.target.id).textContent
+    navigator.clipboard.writeText(color)
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `Copied the color: ${color}`,
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+
 
 // Copy box hex-color to clipboard
 document.getElementById('color-container').addEventListener('click', function(e){
     const color = e.target.id
     navigator.clipboard.writeText(color)
-    alert(`Copied the color: ${color}`)
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `Copied the color: ${color}`,
+        showConfirmButton: false,
+        timer: 1500
+      })
     })
